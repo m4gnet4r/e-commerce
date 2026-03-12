@@ -40,12 +40,14 @@ const Home =()=>{
                 </div>
                 {loading && <p className="text-center">Loading...</p>}
                 {error && <p className="text-center text-red-500">{error}</p>}
-                {!loading && products.length ===0 &&(<p className="text-center">No products</p>)}
+                {!loading && products.length ===0 && (<p className="text-center">No products</p>)}
                 <div className="grid grid-cols-1 smLgrid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                    {products.map((product)=>(<ProductCard key={product._id} product={product}/>))}
+                    {(() => {
+                        return products.map((product) => {
+                            return <ProductCard key={product._id} product={product}/>;
+                        });
+                    })()}
                 </div>
-            
-            
         </div>
     );
 };
